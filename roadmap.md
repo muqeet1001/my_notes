@@ -5,27 +5,27 @@ Track your progress by checking boxes `[x]`
 ---
 
 ## 🟢 Phase 0: Prerequisites (Must Know)
-- [ ] HTML basics (div, input, button)
-- [ ] CSS basics (flexbox, basic styling)
-- [ ] JavaScript fundamentals
-  - [ ] variables & functions
-  - [ ] objects & arrays
-  - [ ] arrow functions
-  - [ ] map / filter
-  - [ ] import / export
+- [ X ] HTML basics (div, input, button)
+- [ X ] CSS basics (flexbox, basic styling)
+- [ X ] JavaScript fundamentals
+  - [X ] variables & functions
+  - [ X ] objects & arrays
+  - [ X] arrow functions
+  - [ X] map / filter
+  - [X ] import / export
 
 ---
 
 ## 🟢 Phase 1: React Foundations (VERY IMPORTANT)
-- [ ] Why React exists
-- [ ] Problems with traditional websites
-- [ ] SPA vs MPA
-- [ ] How React changes the web flow
-- [ ] How a React app loads in browser
-- [ ] HTML → empty `div#root`
-- [ ] JavaScript takes control of UI
-- [ ] DOM basics
-- [ ] Virtual DOM (basic idea)
+- [ X] Why React exists
+- [ X] Problems with traditional websites
+- [X ] SPA vs MPA
+- [X ] How React changes the web flow
+- [X ] How a React app loads in browser
+- [X ] HTML → empty `div#root`
+- [X ] JavaScript takes control of UI
+- [ X] DOM basics
+- [ X] Virtual DOM (basic idea)
 
 ---
 
