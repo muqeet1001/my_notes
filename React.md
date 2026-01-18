@@ -189,3 +189,115 @@ If list items don’t have keys, React cannot identify which item changed.
 So React may update wrong or unnecessary elements.
 key helps React identify list items correctly, so it updates only what actually changed.
 ```
+# React Basics – JSX, Components & Props (Short Notes)
+
+---
+
+## JSX
+
+### Why JSX Exists
+- Writing UI using plain JavaScript is hard to read and maintain
+- JSX makes UI code readable and close to how UI looks
+
+### What is JSX
+- JSX is NOT HTML
+- JSX is NOT understood by the browser
+- JSX is just syntax sugar for JavaScript
+
+### How JSX Works
+- JSX is converted into JavaScript by Babel
+- JSX → React.createElement → Virtual DOM → Real DOM
+- Browser only executes JavaScript
+
+### JSX vs HTML
+- JSX looks like HTML but is JavaScript
+- JSX can contain JavaScript logic using `{ }`
+- HTML is static, JSX is dynamic
+
+### Key Point
+> JSX exists to make writing UI in JavaScript easier and more maintainable.
+
+---
+
+## Components (Functional)
+
+### Why Components Exist
+- Large UI in one file becomes hard to manage
+- Components split UI into small, manageable parts
+
+### What is a Component
+- A component is a JavaScript function that returns JSX
+- Component = UI-producing function
+
+### Why Functional Components
+- Functions can take input and return output
+- Easy to reuse and reason about
+
+### Component Reusability
+- Same component can be used multiple times
+- Write once, use everywhere
+- Fix once, fix everywhere
+
+### Why Components Should Be Small
+- Easier to reuse
+- Easier to debug
+- Easier to maintain
+- Large components break reusability
+
+### If All UI is in One Component
+- Code becomes messy
+- Hard to debug and maintain
+- Changes become unpredictable
+
+### Key Point
+> Components help break complex UI into reusable, focused pieces.
+
+---
+
+## Props
+
+### Why Props Exist
+- Components are reusable but need different data
+- Props allow passing different data to the same component
+
+### What are Props
+- Props are inputs passed from parent to child
+- Similar to function arguments
+
+### Parent → Child Data Flow
+- Data flows only from parent to child
+- Parent owns the data
+- Child only uses the data
+
+### Why One-Way Data Flow
+- Makes UI predictable
+- Easier debugging
+- Clear data ownership
+
+### Why Props are Read-Only
+- Child cannot modify props
+- Parent controls the data
+- Prevents unexpected UI bugs
+
+### Problems if Child Modifies Props
+- Parent logic can break
+- Other components can be affected
+- UI becomes unpredictable
+
+### Props vs State
+- Props → external data (from parent)
+- State → internal data (component’s own)
+- Props are read-only
+- State can be changed
+
+### Key Point
+> Props make components dynamic while keeping data flow predictable.
+
+---
+
+## Final One-Line Summary
+
+- JSX makes UI easy to write
+- Components split UI into reusable pieces
+- Props pass data safely between components
+- Parent owns data, child displays it

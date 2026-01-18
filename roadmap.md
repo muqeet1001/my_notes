@@ -30,14 +30,14 @@ Track your progress by checking boxes `[x]`
 ---
 
 ## 🟢 Phase 2: Core React Concepts
-- [ ] What is JSX
-- [ ] Why JSX exists
-- [ ] JSX vs HTML
-- [ ] Components (functional)
-- [ ] Component reusability
-- [ ] Props
-- [ ] Parent → child data flow
-- [ ] Props are read-only
+- [X ] What is JSX
+- [X ] Why JSX exists
+- [ X] JSX vs HTML
+- [X ] Components (functional)
+- [ X] Component reusability
+- [X ] Props
+- [ X] Parent → child data flow
+- [X ] Props are read-only
 
 ---
 
