@@ -42,23 +42,23 @@ Track your progress by checking boxes `[x]`
 ---
 
 ## 🟢 Phase 3: State & Re-rendering (CORE OF REACT)
-- [ ] What is state
-- [ ] Why state exists
-- [ ] State vs normal variables
-- [ ] How state triggers re-render
-- [ ] What is re-render
-- [ ] Re-render vs page reload
-- [ ] How React updates UI using Virtual DOM
+- [X ] What is state
+- [X ] Why state exists
+- [X ] State vs normal variables
+- [X ] How state triggers re-render
+- [ X] What is re-render
+- [X ] Re-render vs page reload
+- [ X] How React updates UI using Virtual DOM
 
 ---
 
 ## 🟢 Phase 4: Events & Forms
-- [ ] Event handling (onClick, onChange)
-- [ ] Synthetic events
-- [ ] Controlled components
-- [ ] Handling form inputs
-- [ ] Form submit without page reload
-- [ ] preventDefault()
+- [X ] Event handling (onClick, onChange)
+- [X ] Synthetic events
+- [ X] Controlled components
+- [ X] Handling form inputs
+- [ X] Form submit without page reload
+- [ X] preventDefault()
 
 ---
 

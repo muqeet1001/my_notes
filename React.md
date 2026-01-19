@@ -301,3 +301,222 @@ key helps React identify list items correctly, so it updates only what actually 
 - Components split UI into reusable pieces
 - Props pass data safely between components
 - Parent owns data, child displays it
+
+-----
+# React Phase 1 – Core Fundamentals
+
+## useState Hook
+
+### Why useState Exists
+
+- **Normal variables do NOT update UI** — Changing a variable doesn't trigger a re-render
+- **React needs to track UI-related data** — It must know when something important changes
+- **Automatic UI updates** — When data changes, React automatically updates the display
+
+### What is State?
+
+- State is **data that React watches**
+- When state changes → React re-renders the component
+- State is component-specific, internal data
+
+### useState Syntax
+
+```js
+const [value, setValue] = useState(initialValue);
+```
+
+**Breaking it down:**
+- `value` → current state value
+- `setValue` → function to update state
+- `initialValue` → starting value (can be any type)
+
+### Rules of useState
+
+| ❌ WRONG | ✅ RIGHT |
+|---------|---------|
+| `count = count + 1` | `setCount(count + 1)` |
+| Direct state mutation | Using setter function |
+| `setState(value)` if same | `setState(prev => prev + 1)` |
+
+**Key Rules:**
+1. Never update state directly
+2. Always use the setter function
+3. State update may be asynchronous
+4. Functional update is safest: `setCount(prev => prev + 1)`
+
+### State vs Props
+
+| Aspect | Props | State |
+|--------|-------|-------|
+| **Origin** | External (parent) | Internal (component) |
+| **Mutability** | Read-only | Mutable |
+| **Owner** | Parent component | The component itself |
+| **Purpose** | Make components dynamic | Handle interactivity |
+| **Update** | Parent controls | Component controls |
+
+**Simple analogy:**
+- **Props** = Function parameters (data passed in)
+- **State** = Local variables (component's own data)
+
+---
+
+## Re-rendering in React
+
+### What is Re-rendering?
+
+Re-rendering means React re-runs the component function.
+
+**Important:**
+- Re-render ≠ Page reload
+- Re-render ≠ Full DOM rebuild
+- Re-render = Component function runs again
+
+### When Does Re-render Happen?
+
+1. **State changes** — Using setter function triggers re-render
+2. **Parent re-renders** — Child components re-render if parent re-renders
+3. **Props change** — Receiving new props from parent
+
+### What Happens During Re-render?
+
+1. Component function runs again
+2. JSX recalculates with new state/props
+3. New Virtual DOM is created
+4. React compares old Virtual DOM with new Virtual DOM
+5. Only the changed parts are updated in the real DOM
+
+### What Does NOT Trigger Re-render?
+
+```js
+count = count + 1;        // ❌ Direct mutation
+setCount(count);           // ❌ Setting same value
+let localVar = count + 1;  // ❌ Local variables
+```
+
+---
+
+## Events in React
+
+### What are Events?
+
+Events are **user actions** like click, type, submit, etc.
+
+**Common React Events:**
+- `onClick` — button or element clicked
+- `onChange` — input value changed
+- `onSubmit` — form submitted
+- `onKeyDown` — key pressed
+- `onFocus` — input focused
+- `onBlur` — input lost focus
+
+### Event Rules
+
+```js
+// ❌ WRONG - Calling function immediately
+<button onClick={handleClick()}>Click</button>
+
+// ✅ RIGHT - Passing function reference
+<button onClick={handleClick}>Click</button>
+
+// ✅ RIGHT - Arrow function for arguments
+<button onClick={() => handleClick(id)}>Click</button>
+```
+
+**Key Points:**
+- Use camelCase for event names (`onClick`, not `onclick`)
+- Pass function reference, not function call
+- Use arrow functions if you need to pass arguments
+
+---
+
+## Forms in React
+
+### The Default Form Problem
+
+```js
+// Browser's default behavior: RELOAD PAGE
+<form onSubmit={...}>
+  <input />
+  <button type="submit">Submit</button>
+</form>
+```
+
+**React doesn't want page reloads!** That's why we use `preventDefault()`.
+
+### preventDefault
+
+```js
+function handleSubmit(e) {
+  e.preventDefault();  // Stops browser's default reload
+  // Now handle with React logic
+}
+```
+
+**What it does:**
+- Prevents browser's default behavior (page reload)
+- Allows React to handle form submission with JavaScript
+- Still have access to form data
+
+---
+
+## Controlled Inputs (Two-Way Binding)
+
+### What is Two-Way Binding in React?
+
+A **controlled input** means:
+1. Input value is stored in state
+2. Input changes update state
+3. State changes update input
+
+This creates a loop:
+
+```
+User types → onChange fires → setState → Re-render → UI updates
+```
+
+### Example
+
+```jsx
+const [name, setName] = useState("");
+
+<input
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+/>
+```
+
+**Flow explanation:**
+1. `value={name}` — Input displays current state
+2. User types in input
+3. `onChange` event fires
+4. `setName()` updates state with new value
+5. Component re-renders
+6. Input now shows new value
+
+### Why Controlled Inputs are Better
+
+| Benefit | Example |
+|---------|---------|
+| **React always knows input value** | No need to query DOM |
+| **Easy validation** | Check value before setState |
+| **Easy submission** | Value is already in state |
+| **Predictable UI** | Single source of truth |
+
+```js
+function handleSubmit(e) {
+  e.preventDefault();
+  // name is already in state, ready to submit
+  console.log("Submitting:", name);
+}
+```
+
+### Important Clarifications
+
+- **React uses one-way data flow** ← parent to child
+- **Two-way binding means** ↔ state ↔ input value (within same component)
+- **Browser does NOT re-render** ← React re-renders components
+- This is NOT the same as two-way binding in other frameworks (like Vue or Angular)
+
+---
+
+ 
