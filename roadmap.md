@@ -63,12 +63,12 @@ Track your progress by checking boxes `[x]`
 ---
 
 ## 🟢 Phase 5: Side Effects & Hooks
-- [ ] What are side effects
-- [ ] Why useEffect exists
-- [ ] useEffect basics
-- [ ] Dependency array
-- [ ] Cleanup function
-- [ ] API calls using useEffect
+- [ X] What are side effects
+- [X ] Why useEffect exists
+- [X ] useEffect basics
+- [X ] Dependency array
+- [X ] Cleanup function
+- [ X] API calls using useEffect
 
 ---
 
