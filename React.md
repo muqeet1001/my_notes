@@ -647,4 +647,167 @@ useState(() => expensiveCalculation());
 
 ---
 
+# useEffect Hook – Complete Guide
+
+## 🔹 What is useEffect?
+
+- `useEffect` is a React hook used to run **side effects**
+- Side effects are operations that interact with the outside world
+- `useEffect` runs **after the component renders**
+- `useEffect is a React Hook that lets a component run side-effect logic after rendering, to synchronize the component with things that are outside the render process—whether those things are external systems or non-render logic inside React itself.`
+
+---
+
+## 🔹 What is a Side Effect?
+
+A side effect is any code that:
+- Is NOT just calculating UI
+- Affects something outside React render
+
+### Examples:
+- API calls
+- Timers (`setInterval`, `setTimeout`)
+- Event listeners
+- Subscriptions
+- DOM manipulation
+- Logging
+
+---
+
+## 🔹 Why useEffect is Needed
+
+- React render must be **pure**
+- Render can run multiple times
+- Side effects inside render cause bugs
+
+👉 `useEffect` safely handles side effects **after render**
+
+---
+
+## 🔹 useEffect Syntax
+
+```js
+useEffect(() => {
+  // side effect code
+}, [dependencies]);
+```
+
+---
+
+## 🔹 When does useEffect run?
+
+### 1️⃣ No dependency array
+
+```js
+useEffect(() => {
+  console.log("Effect");
+});
+```
+
+- Runs after every render
+- Dangerous for API calls
+
+### 2️⃣ Empty dependency array `[]`
+
+```js
+useEffect(() => {
+  console.log("Mounted");
+}, []);
+```
+
+- Runs once after first render (mount)
+- Cleanup runs on unmount
+
+### 3️⃣ Dependency array with values
+
+```js
+useEffect(() => {
+  console.log("Count changed");
+}, [count]);
+```
+
+- Runs on mount
+- Runs again when count changes
+
+---
+
+## 🔹 Dependency Array Rules (VERY IMPORTANT)
+
+- Dependency array controls when effect re-runs
+- If a variable is used inside useEffect and can change, it must be included in the dependency array
+
+### ❌ Buggy:
+
+```js
+useEffect(() => {
+  console.log(count);
+}, []);
+```
+
+### ✅ Correct:
+
+```js
+useEffect(() => {
+  console.log(count);
+}, [count]);
+```
+
+---
+
+## 🔹 Cleanup Function
+
+```js
+useEffect(() => {
+  const id = setInterval(() => {}, 1000);
+
+  return () => {
+    clearInterval(id);
+  };
+}, []);
+```
+
+Cleanup runs:
+- When component unmounts
+- Before next effect runs (on update)
+
+Used to:
+- Clear timers
+- Remove event listeners
+- Cancel subscriptions
+
+---
+
+## 🔹 Lifecycle Understanding
+
+useEffect handles lifecycle-related logic
+
+### Component lifecycle:
+- Mount
+- Update
+- Unmount
+
+### Important Truth:
+- State change does NOT unmount component
+- Only effects clean up and re-run
+- Component unmounts only when removed from JSX
+
+---
+
+## 🔹 Common Mistakes
+
+❌ Side effects inside render  
+❌ Missing dependencies  
+❌ API calls without dependency array  
+❌ Infinite loops in useEffect
+
+---
+
+## 🔑 Golden Rules (Memorize)
+
+1. `useEffect` runs after render
+2. Dependency array controls execution
+3. No dependency array → runs every render
+4. Empty array → runs once
+5. Cleanup prevents memory leaks
+
  
