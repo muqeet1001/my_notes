@@ -186,23 +186,129 @@ Output:
 ------------------------------------------------------------------------
 
 ## 11. Promise Static Methods
+ # JavaScript Promise Methods Notes
 
-### Promise.all()
+## 1. Promise.all()
 
--   Runs multiple promises in parallel
--   Fails if any one fails
+### Concept
+Promise.all waits for ALL promises to succeed.
 
-### Promise.race()
+- If ALL promises succeed → returns all results
+- If ONE promise fails → immediately fails
+- It does not wait for others after failure
+- Result is returned as an array
 
--   First settled promise wins
+### Key Idea
+ALL or NOTHING
 
-### Promise.allSettled()
+### Real-life example
+You ordered:
+- Phone
+- Charger
+- Earphones
 
--   Waits for all, regardless of success/failure
+You need ALL items.
 
-### Promise.any()
+If one item is cancelled → your complete order fails.
 
--   First fulfilled promise wins
+---
+
+## 2. Promise.allSettled()
+
+### Concept
+Promise.allSettled waits for ALL promises to finish.
+
+- It does not matter if promises succeed or fail
+- It always returns results of all promises
+- Shows which succeeded and which failed
+
+### Key Idea
+Wait for ALL, success or fail — just give report
+
+### Real-life example
+You applied to:
+- Google
+- Microsoft
+- Amazon
+
+Some accept, some reject.
+
+You want to know ALL results.
+
+---
+
+## 3. Promise.race()
+
+### Concept
+Promise.race returns the FIRST promise that finishes.
+
+- It does not care success or failure
+- First completed promise decides result
+
+### Key Idea
+Fastest result wins
+
+### Real-life example
+You booked cab from:
+- Uber
+- Ola
+- Rapido
+
+First driver who responds gets your ride.
+
+Even if response is "not available", race ends.
+
+---
+
+## 4. Promise.any()
+
+### Concept
+Promise.any returns the FIRST SUCCESSFUL promise.
+
+- Ignores failed promises
+- Waits until one promise succeeds
+- Fails only if ALL promises fail
+
+### Key Idea
+First SUCCESS wins
+
+### Real-life example
+You try logging in using:
+- Google login
+- Facebook login
+- Email login
+
+If one login works → you enter.
+
+It ignores failed login methods.
+
+---
+
+# Final Comparison Table
+
+| Method | Waits for all | Fails if one fails | Returns first success | Returns first settle |
+|------|---------------|-------------------|---------------------|---------------------|
+| Promise.all | Yes | Yes | No | No |
+| Promise.allSettled | Yes | No | No | No |
+| Promise.race | No | No | No | Yes |
+| Promise.any | No | Only if all fail | Yes | No |
+
+---
+
+# Memory Tricks
+
+Promise.all  
+→ ALL must succeed
+
+Promise.allSettled  
+→ Wait for ALL results
+
+Promise.race  
+→ Fastest wins
+
+Promise.any  
+→ First success wins
+   First fulfilled promise wins
 
 ------------------------------------------------------------------------
 
